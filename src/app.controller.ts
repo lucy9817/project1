@@ -1,22 +1,12 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller('api')
-export class ApiController {
+@Controller()
+export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('meet')
-  getMeet(): string {
-    return this.appService.getMeet();
+  @Get()
+  getHello(): string {
+    return this.appService.getHello();
   }
-
-  @Post('meet')
-  postMeet(@Body() data: any): string {
-    const name = data.name || 'Anonymous';
-    return `반갑습니다, ${name}님!`;
-  }
-
 }
-
-
-
